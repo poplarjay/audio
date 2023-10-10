@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Raleway', sans-serif, Arial;
-    margin: 30px 80px 0px 80px;
+    margin: 30px 80px 0px 120px;
     line-height: 26px;
     color: #9dfab8;
     background-color: #2b2b2b;
@@ -29,14 +29,14 @@ p, li {
 .container {
     display: inline-block;
     width: 35%;
-    min-width: 350px;
-    max-width: 400px;
+    min-width: 400px;
+    max-width: 450px;
 }
 
 .track {
     background-color: #404040;
     border-radius: 5px;
-    margin: 20px 40px 20px 20px;
+    margin: 20px 100px 20px 20px;
     padding: 20px 20px 20px 20px;
 }
 
@@ -72,7 +72,7 @@ p, li {
 
 .book {
     list-style-type: none;
-    min-width: 350px;
+    min-width: 400px;
     margin-left: -20px;
     color: white;
     opacity: 0.8;
@@ -133,7 +133,7 @@ p, li {
 }
 
 
-@media screen and (max-width: 1084px) {
+@media screen and (max-width: 1284px) {
 
     body {
         margin-left: 10px;
@@ -159,9 +159,9 @@ p, li {
     .container {
         display: block;
         margin: auto;
-        width: 60%;
-        max-width: 350px;
-        min-width: 200px;
+        width: 70%;
+        max-width: 400px;
+        min-width: 300px;
     }
 
     .player {
@@ -184,7 +184,7 @@ p, li {
 
     .book {
         width: 100%;
-        min-width: 200px;
+        min-width: 300px;
         margin-left: -40px;
     }
 }
