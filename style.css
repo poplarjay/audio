@@ -1,0 +1,190 @@
+@import url('https://themes.googleusercontent.com/fonts/css?kit=NVWGKW8pC4yJvbnzJuWfbiB38A_Z_8wKoRHMSx1gVi6WYRgE3v-r3GoQb6ax0_L_hsmsMnmAOnuclselIyjr9A');
+
+body {
+    font-family: 'Raleway', sans-serif, Arial;
+    margin: 30px 80px 0px 80px;
+    line-height: 26px;
+    color: #9dfab8;
+    background-color: #2b2b2b;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+p, li {
+    font-size: 18px;
+}
+
+.container {
+    display: inline-block;
+    width: 35%;
+    min-width: 350px;
+    max-width: 400px;
+}
+
+.track {
+    background-color: #404040;
+    border-radius: 5px;
+    margin: 20px 40px 20px 20px;
+    padding: 20px 20px 20px 20px;
+}
+
+/* cover photo and text */
+.track-info {
+    margin-bottom: -160px;
+}
+
+/*.photo {
+    padding: 0px 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.track-photo {
+    width: 160px;
+    height: 160px;
+}*/
+
+.track-text {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0px 20px 0px 20px;
+}
+
+/* books audio list */
+
+.books {
+    vertical-align: top;
+    margin-right: 80px;
+    margin-top: 0px;
+}
+
+.book {
+    list-style-type: none;
+    min-width: 350px;
+    margin-left: -20px;
+    color: white;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.book:hover {
+    opacity: 1.0;
+}
+
+/*.book-photo {
+    width: 100px;
+    height: 100px;
+}*/
+
+/* audio player buttons */
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 180px 20px 0px 20px;
+
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.buttons:hover {
+    opacity: 1.0;
+}
+
+.fa-play {
+    vertical-align: middle;
+}
+
+/* seek slider */
+.slider {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    padding: 0px 4px 0px 4px;
+    width: 40px;
+}
+
+.slider_input {
+    width: 75%;
+    accent-color: #9dfab8;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+ 
+.slider_input:hover {
+    opacity: 1.0;
+}
+
+
+@media screen and (max-width: 1084px) {
+
+    body {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    header {
+        margin-left: 5px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p, li {
+        font-size: 16px;
+    }
+
+    .container {
+        display: block;
+        margin: auto;
+        width: 60%;
+        max-width: 350px;
+        min-width: 200px;
+    }
+
+    .player {
+        margin-bottom: 40px;
+    }
+
+/*    .photo {
+        margin-left: -20px;
+        width: 80px;
+        height: 80px;
+    }*/
+
+    .track-info {
+        margin-bottom: -100px;
+    }
+
+    .buttons {
+        margin: 120px 20px 0px 20px;
+    }
+
+    .book {
+        width: 100%;
+        min-width: 200px;
+        margin-left: -40px;
+    }
+}

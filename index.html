@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+<head>
+<title>MBooks</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- fa ("font awesome") classes from here -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<link href="style.css" rel="stylesheet" />
+<link rel="icon" href="#">
+</head>
+
+<body>
+
+  <div class="player container track">
+ 
+    <!-- cover photo and text -->
+    <div class="track-info track-container">
+      <!-- <img class="photo track-photo"> -->
+      <span class=track-text>
+        <h2 id="title">Book Title</h2>
+        <p id="chapter">Chapter</p>
+      </span>
+    </div>
+ 
+    <!-- audio player buttons (using "font awesome" icons) -->
+    <div class="buttons">
+      <div class="rewind" onclick="skipBack()">
+        <i class="fa fa-arrow-rotate-left fa-2x"></i>
+      </div>
+      <div class="prev-track" onclick="prevTrack()">
+        <i class="fa fa-step-backward fa-2x"></i>
+      </div>
+      <div class="play-pause" onclick="playPause()">
+        <i class="fa fa-play-circle fa-3x"></i>
+      </div>
+      <div class="next-track" onclick="nextTrack()">
+        <i class="fa fa-step-forward fa-2x"></i>
+      </div>
+      <div class="skip-ahead" onclick="skipAhead()">
+        <i class="fa fa-arrow-rotate-right fa-2x"></i>
+      </div>
+    </div>
+ 
+    <!-- seek slider -->
+    <div class="slider">
+      <span class="time" id="curr-time">00:00</span>
+      <input type="range" min="0" max="1000"
+        value="0" class="slider_input" onchange="seekSlider()">
+      <span class="time" id="total-time">00:00</span>
+    </div>
+  </div>
+
+  <ol class="books container"></ol>
+
+  <script src="audioplayer.js"></script>
+
+</body>
+</html>
