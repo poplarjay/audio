@@ -130,6 +130,8 @@ function pauseTrack() {
 function nextTrack() {
     chap_index += 1;
     play_next = true;
+
+    let old_book_index = book_index;
     if (chap_index >= books[book_index]["chapters"]) {
         book_index += 1;
         chap_index = 0;
@@ -137,6 +139,10 @@ function nextTrack() {
             book_index = 0;
             play_next = false;
         }
+    }
+
+    if (old_book_index != book_index) {
+        changeHighlight(old_book_index, book_index);
     }
 
     loadTrack();
@@ -149,6 +155,7 @@ function nextTrack() {
 
 // go to prev track if within first 2 seconds, otherwise reload current track
 function prevTrack() {
+    let old_book_index = book_index;
     if (curr_track.currentTime < 2) {
         chap_index -= 1;
         if (chap_index < 0) {
@@ -158,6 +165,10 @@ function prevTrack() {
             }
             chap_index = books[book_index]["chapters"] - 1;
         }
+    }
+
+    if (old_book_index != book_index) {
+        changeHighlight(old_book_index, book_index);
     }
 
     loadTrack();
@@ -265,21 +276,25 @@ function populateBooks() {
     }
 }
 
+// unhighlight old book at index i, highlight next book at index j
+function changeHighlight(i, j) {
+    let title = document.getElementById(i.toString());
+    title.style.color = "white";
+
+    title = document.getElementById(j.toString());
+    title.style.color = highlight;
+}
+
 // on book click, switch to book
 document.addEventListener("click", function(e) {
     if (e.target && !isNaN(e.target.dataset.index)) {
 
         // if html element contains an index in book range
-        let i = e.target.dataset.index;
+        let i = Number(e.target.dataset.index);
         if (i >= 0 && i < books.length && i != book_index) {
-            let curr_title = document.getElementById(book_index.toString());
-            curr_title.style.color = "white";
-
+            changeHighlight(book_index, i);
             book_index = i;
             chap_index = 0;
-
-            let next_title = document.getElementById(i.toString());
-            next_title.style.color = highlight;
 
             loadTrack();
             playTrack();
