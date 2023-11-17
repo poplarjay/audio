@@ -37,7 +37,8 @@ var books = [
   {title: "Book 3", folder: "3", chapters: 6},
   {title: "Book 4", folder: "4", chapters: 8},
   {title: "Book 5", folder: "5", chapters: 20},
-  {title: "Book 6", folder: "6", chapters: 8}
+  {title: "Book 6", folder: "6", chapters: 8},
+  {title: "Book 7", folder: "7", chapters: 12}
 ];
 
 // initialize and load first audio
