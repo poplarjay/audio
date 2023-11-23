@@ -92,6 +92,9 @@ function loadTrack() {
     // set up audio slider with function to call every second (1000 ms)
     update_timer = setInterval(updateSlider, 1000);
     curr_track.addEventListener("ended", nextTrack);
+
+    // update notification player track info
+    updateMetadata();
 }
 
 // reset slider and time values upon load new track
@@ -215,6 +218,9 @@ function updateSlider() {
     // format min:sec with leading 0
     curr_time.textContent = ("00" + curr_min).slice(-2) + ":" + ("00" + curr_sec).slice(-2);
     total_time.textContent = ("00" + total_min).slice(-2) + ":" + ("00" + total_sec).slice(-2);
+
+    // update position in notification player
+    updatePositionState();
 }
 
 // save current position in local storage
@@ -223,6 +229,70 @@ function storePosition() {
     localStorage[chap_field] = chap_index;
     localStorage[time_field] = curr_track.currentTime;
 }
+
+
+/* navigator media session (notifications audio player) functions */
+
+// update notification player metadata to display current book/chapter info as track info
+function updateMetadata() {
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: chapter.textContent,
+        album: title.textContent
+        // , artwork: [{ src: getCover(book_index), type: 'image/png' }]
+    });
+
+    updatePositionState();
+}
+
+// update slider in notification player
+function updatePositionState() {
+    duration = curr_track.duration;
+    if (isNaN(duration)) {
+        duration = 0;
+    }
+
+    navigator.mediaSession.setPositionState({
+        duration: duration,
+        playbackRate: curr_track.playbackRate,
+        position: curr_track.currentTime
+    });
+}
+
+
+navigator.mediaSession.setActionHandler("play", () => {
+    playTrack();
+});
+
+navigator.mediaSession.setActionHandler("pause", () => {
+    pauseTrack();
+});
+
+navigator.mediaSession.setActionHandler("seekbackward", () => {
+    skipBack();
+});
+
+navigator.mediaSession.setActionHandler("seekforward", () => {
+    skipAhead();
+});
+
+navigator.mediaSession.setActionHandler("seekto", (e) => {
+    if (e.fastSeek) {
+      curr_track.fastSeek(e.seekTime);
+    } else {
+        curr_track.currentTime = e.seekTime;
+    }
+
+    // curr_track.currentTime = curr_track.duration * (slider.value / 1000);
+    updateSlider();
+});
+
+navigator.mediaSession.setActionHandler("previoustrack", () => {
+    prevTrack();
+});
+
+navigator.mediaSession.setActionHandler("nexttrack", () => {
+    nextTrack();
+});
 
 
 /* on keyboard press events */
@@ -279,11 +349,11 @@ function populateBooks() {
 
 // unhighlight old book at index i, highlight next book at index j
 function changeHighlight(i, j) {
-    let title = document.getElementById(i.toString());
-    title.style.color = "white";
+    let book_title = document.getElementById(i.toString());
+    book_title.style.color = "white";
 
-    title = document.getElementById(j.toString());
-    title.style.color = highlight;
+    book_title = document.getElementById(j.toString());
+    book_title.style.color = highlight;
 }
 
 // on book click, switch to book
