@@ -275,16 +275,17 @@ navigator.mediaSession.setActionHandler("seekforward", () => {
     skipAhead();
 });
 
-navigator.mediaSession.setActionHandler("seekto", (e) => {
-    if (e.fastSeek) {
-      curr_track.fastSeek(e.seekTime);
-    } else {
-        curr_track.currentTime = e.seekTime;
-    }
+// seekto doesn't work in firefox, makes buttons not work in chrome
+// navigator.mediaSession.setActionHandler("seekto", (e) => {
+//     if (e.fastSeek) {
+//       curr_track.fastSeek(e.seekTime);
+//     } else {
+//         curr_track.currentTime = e.seekTime;
+//     }
 
-    // curr_track.currentTime = curr_track.duration * (slider.value / 1000);
-    updateSlider();
-});
+//     // curr_track.currentTime = curr_track.duration * (slider.value / 1000);
+//     updateSlider();
+// });
 
 navigator.mediaSession.setActionHandler("previoustrack", () => {
     prevTrack();
